@@ -35,4 +35,14 @@ class MovieController extends Controller
         $movie->delete();
         return 204;
     }
+
+    // GET GENRE
+    public function getMoviesByGenre($genre)
+    {
+        // Query the database for movies with the specified genre
+        $movies = Movie::where('genre', $genre)->get();
+
+        // Return the response
+        return response()->json($movies);
+    }
 }
