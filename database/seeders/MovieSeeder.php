@@ -113,6 +113,28 @@ class MovieSeeder extends Seeder
                 "overall_rating" => 8.2,
                 "description" => "On the eve of their high school graduation, two academic superstars and best friends realize they should have worked less and played more. Determined not to fall short of their peers, the girls try to cram four years of fun into one night.",
                 "created_at" => "2019-05-24T09:18:19.000Z"
+            ],
+            [
+                "movie_id" => 10,
+                "title" => "The Irishman",
+                "genre" => "comedy",
+                "duration" => "1 hour 20 minutes",
+                "views" => 21100,
+                "poster" => "https://m.media-amazon.com/images/M/MV5BMGUyM2ZiZmUtMWY0OC00NTQ4LThkOGUtNjY2NjkzMDJiMWMwXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_FMjpg_UX1000_.jpg",
+                "overall_rating" => 7.9,
+                "description" => "An aging hitman recalls his time with the mob and the intersecting events with his friend, Jimmy Hoffa, through the 1950-70s.",
+                "created_at" => "2019-11-27T09:18:19.000Z"
+            ],
+            [
+                "movie_id" => 11,
+                "title" => "Shoplifters",
+                "genre" => "comedy",
+                "duration" => "1 hour 20 minutes",
+                "views" => 21100,
+                "poster" => "https://m.media-amazon.com/images/M/MV5BYWZmOTY0MDAtMGRlMS00YjFlLWFkZTUtYmJhYWNlN2JjMmZkXkEyXkFqcGdeQXVyODAzODU1NDQ@._V1_.jpg",
+                "overall_rating" => 8.9,
+                "description" => "A family of small-time crooks take in a child they find outside in the cold.",
+                "created_at" => "2018-11-23T09:18:19.000Z"
             ]
         ];
 

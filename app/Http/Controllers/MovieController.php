@@ -45,4 +45,25 @@ class MovieController extends Controller
         // Return the response
         return response()->json($movies);
     }
+
+    //GET TimeSlot
+    public function getMoviesByTimeslot(Request $request)
+    {
+        $request->validate([
+            'theater_name' => 'required|string',
+            'time_start' => 'required|date_format:H:i',
+            'time_end' => 'required|date_format:H:i',
+        ]);
+
+        $theaterName = $request->input('theater_name');
+        $timeStart = $request->input('time_start');
+        $timeEnd = $request->input('time_end');
+
+        $movies = Movie::where('theater_name', $theaterName)
+            ->whereTime('showtime_start', '>=', $timeStart)
+            ->whereTime('showtime_end', '<=', $timeEnd)
+            ->get();
+
+        return response()->json($movies);
+    }
 }

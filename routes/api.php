@@ -10,4 +10,5 @@ Route::prefix('movies')->group(function () {
     Route::put('/{id}', [MovieController::class, 'update']);
     Route::delete('/{id}', [MovieController::class, 'destroy']);
     Route::get('/genre/{genre}', [MovieController::class, 'getMoviesByGenre']);
+    Route::get('/timeslot', [MovieController::class, 'getMoviesByTimeslot']);
 });
