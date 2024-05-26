@@ -1,5 +1,5 @@
 <?php
-
+// routes/api.php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 
@@ -11,4 +11,5 @@ Route::prefix('movies')->group(function () {
     Route::delete('/destroy/{id}', [MovieController::class, 'destroy']);
     Route::get('/genre/{genre}', [MovieController::class, 'getMoviesByGenre']);
     Route::get('/timeslot', [MovieController::class, 'getMoviesByTimeslot']);
+    Route::get('/theater-movies', [MovieController::class, 'getMoviesByTheaterAndDate']);
 });

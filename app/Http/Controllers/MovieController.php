@@ -1,5 +1,5 @@
 <?php
-
+// Controllers/MovieController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -91,6 +91,41 @@ class MovieController extends Controller
                 $query->where('screenings.start_time', '>=', $timeStart)
                     ->where('screenings.end_time', '<=', $timeEnd);
             })
+            ->orderBy('Movie.movie_list.movie_id')
+            ->get();
+
+        return response()->json($movies);
+    }
+
+    // GET Specific Movie Theater
+    public function getMoviesByTheaterAndDate(Request $request)
+    {
+        $request->validate([
+            'theater_name' => 'required|string',
+            'd_date' => 'required|date_format:Y-m-d',
+        ]);
+
+        $theaterName = $request->input('theater_name');
+        $dDate = $request->input('d_date');
+
+        $movies = Movie::select(
+            'Movie.movie_list.movie_id',
+            'title',
+            'duration',
+            'views',
+            'genre',
+            'poster',
+            'overall_rating',
+            'theater_name',
+            'start_time',
+            'end_time',
+            'description',
+            'theater_room_no'
+        )
+            ->join('Movie.screenings', 'Movie.movie_list.movie_id', '=', 'Movie.screenings.movie_id')
+            ->join('Movie.theaters', 'Movie.screenings.theater_id', '=', 'Movie.theaters.theater_id')
+            ->where('Movie.theaters.theater_name', $theaterName)
+            ->whereDate('Movie.screenings.start_time', $dDate)
             ->orderBy('Movie.movie_list.movie_id')
             ->get();
 
