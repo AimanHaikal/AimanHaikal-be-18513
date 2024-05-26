@@ -12,4 +12,5 @@ Route::prefix('movies')->group(function () {
     Route::get('/genre/{genre}', [MovieController::class, 'getMoviesByGenre']);
     Route::get('/timeslot', [MovieController::class, 'getMoviesByTimeslot']);
     Route::get('/theater-movies', [MovieController::class, 'getMoviesByTheaterAndDate']);
+    Route::get('/performer-movies', [MovieController::class, 'getMoviesByPerformer']);
 });

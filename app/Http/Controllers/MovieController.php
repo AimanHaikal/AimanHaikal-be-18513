@@ -131,4 +131,35 @@ class MovieController extends Controller
 
         return response()->json($movies);
     }
+
+    //GET Search Performer
+    public function getMoviesByPerformer(Request $request)
+    {
+        // Validate request parameters
+        $request->validate([
+            'performer_name' => 'required|string',
+        ]);
+
+        // Retrieve performer by name
+        $performerName = $request->input('performer_name');
+
+        // Retrieve movies performed by the performer
+        $movies = Movie::select(
+            'Movie.movie_list.movie_id',
+            'overall_rating',
+            'title',
+            'description',
+            'duration',
+            'views',
+            'genre',
+            'poster',
+        )
+            ->join('Movie.performer_movie', 'Movie.movie_list.movie_id', '=', 'Movie.performer_movie.movie_id')
+            ->join('Movie.performers', 'Movie.performers.performer_id', '=', 'Movie.performer_movie.performer_id')
+            ->where('Movie.performers.performer_name', $performerName)
+            ->orderBy('Movie.movie_list.movie_id')
+            ->get();
+
+        return response()->json($movies);
+    }
 }
