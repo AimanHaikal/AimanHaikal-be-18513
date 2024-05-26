@@ -24,12 +24,12 @@ class Screening extends Model
     // Define the relationship with the Movie model
     public function movie()
     {
-        return $this->belongsTo(Movie::class);
+        return $this->belongsTo(Movie::class, 'movie_id', 'movie_id');
     }
 
     // Define the relationship with the Theater model
     public function theater()
     {
-        return $this->belongsTo(Theater::class);
+        return $this->belongsTo(Theater::class, 'theater_id', 'theater_id');
     }
 }
